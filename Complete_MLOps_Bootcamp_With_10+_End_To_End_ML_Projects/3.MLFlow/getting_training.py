@@ -30,12 +30,12 @@ print(y_pred)
 
 accuracy = accuracy_score(y_test, y_pred)
 
-mlflow.set_experiment("test")
+mlflow.set_experiment("Logistic_Regression_Testing")
 
 with mlflow.start_run():
     mlflow.log_params(params)
     mlflow.log_param("lr", lr)
-    mlflow.log_metric("accuracy", accuracy)
+    mlflow.log_metric("Accuracy", accuracy)
     mlflow.set_tag("Training info", "basic LR model")
     signature = infer_signature(X_train, lr.predict(X_train))
     model_info=mlflow.sklearn.log_model(
