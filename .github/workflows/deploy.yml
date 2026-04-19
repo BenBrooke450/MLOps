@@ -1,0 +1,56 @@
+name: ML Pipeline CI
+
+on:
+  push:
+    paths:
+      - "5.MachineLearningPipeline/**"
+  pull_request:
+    paths:
+      - "5.MachineLearningPipeline/**"
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      # -------------------------
+      # Python setup
+      # -------------------------
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      # -------------------------
+      # Install dependencies
+      # -------------------------
+      - name: Install dependencies
+        run: |
+          pip install -r 5.MachineLearningPipeline/requirements.txt
+          pip install dvc
+
+      # -------------------------
+      # Pull data from DVC
+      # -------------------------
+      - name: Pull data from DVC
+        run: |
+          cd 5.MachineLearningPipeline
+          dvc pull
+
+      # -------------------------
+      # Run your pipeline
+      # -------------------------
+      - name: Run training
+        run: |
+          cd 5.MachineLearningPipeline
+          python train.py
+
+      # -------------------------
+      # Build Docker image (CI check only)
+      # -------------------------
+      - name: Build Docker image
+        run: |
+          docker build -t ml-pipeline-test ./5.MachineLearningPipeline

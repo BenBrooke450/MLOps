@@ -1,0 +1,11 @@
+
+
+torch
+Pillow
+numpy
+pandas
+sklearn
+mlflow
+yaml
+hyperopt
+
