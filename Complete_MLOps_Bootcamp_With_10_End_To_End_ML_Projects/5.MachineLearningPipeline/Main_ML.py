@@ -25,10 +25,7 @@ def hyperparameter_truning(X_train, y_train, param_grid):
     grid_search.fit(X_train, y_train)
     return grid_search
 
-
-params = yaml.safe_load(
-    open("/Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/5.MachineLearningPipeline/params.yaml")
-)["train"]
+params = yaml.safe_load(open("params.yaml"))["train"]
 
 
 def train(data_path,model_path,random_state,n_estimators,max_depth):
