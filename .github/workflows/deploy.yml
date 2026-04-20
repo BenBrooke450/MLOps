@@ -35,15 +35,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r Complete_MLOps_Bootcamp_With_10+_End_To_End_ML_Projects/5.MachineLearningPipeline/requirements.txt
-          pip install dvc
 
-      # -------------------------
-      # Pull data from DVC
-      # -------------------------
-      - name: Pull data from DVC
-        run: |
-          cd Complete_MLOps_Bootcamp_With_10+_End_To_End_ML_Projects/5.MachineLearningPipeline
-          dvc pull
 
       # -------------------------
       # Run your pipeline
@@ -53,12 +45,21 @@ jobs:
           cd Complete_MLOps_Bootcamp_With_10+_End_To_End_ML_Projects/5.MachineLearningPipeline
           python Main_ML.py
 
+      - name: Debug structure
+        run: |
+          pwd
+          ls -R
+
       # -------------------------
       # Build Docker image (CI check only)
       # -------------------------
       - name: Build Docker image
         run: |
           docker build -t ml-pipeline-test ./Complete_MLOps_Bootcamp_With_10+_End_To_End_ML_Projects/5.MachineLearningPipeline
+          
+
+      - name: Run Docker container
+        run: docker run ml-pipeline-test
 
 
 
