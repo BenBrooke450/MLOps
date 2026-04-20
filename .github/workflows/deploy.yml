@@ -3,10 +3,10 @@ name: ML Pipeline CI
 on:
   push:
     paths:
-      - "5.MachineLearningPipeline/**"
+      - "Complete_MLOps_Bootcamp_With_10+_End_To_End_ML_Projects/5.MachineLearningPipeline/**"
   pull_request:
     paths:
-      - "5.MachineLearningPipeline/**"
+      - "Complete_MLOps_Bootcamp_With_10+_End_To_End_ML_Projects/5.MachineLearningPipeline/**"
 
 jobs:
   ci:
