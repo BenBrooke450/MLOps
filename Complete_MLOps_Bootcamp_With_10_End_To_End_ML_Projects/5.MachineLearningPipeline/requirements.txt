@@ -2,11 +2,11 @@
 
 torch
 Pillow
-numpy
+numpy>=1.24
 pandas
 scikit-learn
 mlflow
-yaml
+PyYAML
 hyperopt
 plotly
 
