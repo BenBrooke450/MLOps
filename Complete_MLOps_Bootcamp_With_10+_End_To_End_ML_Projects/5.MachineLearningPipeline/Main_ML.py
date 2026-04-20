@@ -76,3 +76,6 @@ def train(data_path,model_path,random_state,n_estimators,max_depth):
 if __name__ == "__main__":
     train(params["data"],params["model_path"],params["random_state"],params["n_estimators"],params["max_depth"])
 
+
+print("CHECK MY CODE")
+
