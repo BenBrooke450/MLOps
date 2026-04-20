@@ -3,23 +3,62 @@
 
 
 
-name: Debug CI
+name: ML Pipeline CI
 
 on:
   push:
-  workflow_dispatch:
+    paths:
+      - "Complete_MLOps_Bootcamp_With_10+_End_To_End_ML_Projects/5.MachineLearningPipeline/**"
+  pull_request:
+    paths:
+      - "Complete_MLOps_Bootcamp_With_10+_End_To_End_ML_Projects/5.MachineLearningPipeline/**"
 
 jobs:
-  test:
+  ci:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-      - name: Debug
+      # -------------------------
+      # Python setup
+      # -------------------------
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      # -------------------------
+      # Install dependencies
+      # -------------------------
+      - name: Install dependencies
         run: |
-          pwd
-          ls -R
+          pip install -r Complete_MLOps_Bootcamp_With_10+_End_To_End_ML_Projects/5.MachineLearningPipeline/requirements.txt
+          pip install dvc
+
+      # -------------------------
+      # Pull data from DVC
+      # -------------------------
+      - name: Pull data from DVC
+        run: |
+          cd Complete_MLOps_Bootcamp_With_10+_End_To_End_ML_Projects/5.MachineLearningPipeline
+          dvc pull
+
+      # -------------------------
+      # Run your pipeline
+      # -------------------------
+      - name: Run training
+        run: |
+          cd Complete_MLOps_Bootcamp_With_10+_End_To_End_ML_Projects/5.MachineLearningPipeline
+          python Main_ML.py
+
+      # -------------------------
+      # Build Docker image (CI check only)
+      # -------------------------
+      - name: Build Docker image
+        run: |
+          docker build -t ml-pipeline-test ./Complete_MLOps_Bootcamp_With_10+_End_To_End_ML_Projects/5.MachineLearningPipeline
 
 
 
