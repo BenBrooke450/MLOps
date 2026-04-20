@@ -27,7 +27,7 @@ def hyperparameter_truning(X_train, y_train, param_grid):
 
 
 params = yaml.safe_load(
-    open("/Users/benjaminbrooke/PycharmProjects/MLOps/Complete_MLOps_Bootcamp_With_10+_End_To_End_ML_Projects/5.MachineLearningPipeline/params.yaml")
+    open("/Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/5.MachineLearningPipeline/params.yaml")
 )["train"]
 
 

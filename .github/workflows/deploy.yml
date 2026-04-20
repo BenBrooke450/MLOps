@@ -8,10 +8,10 @@ name: ML Pipeline CI
 on:
   push:
     paths:
-      - "Complete_MLOps_Bootcamp_With_10+_End_To_End_ML_Projects/5.MachineLearningPipeline/**"
+      - "../../Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/5.MachineLearningPipeline/**"
   pull_request:
     paths:
-      - "Complete_MLOps_Bootcamp_With_10+_End_To_End_ML_Projects/5.MachineLearningPipeline/**"
+      - "../../Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/5.MachineLearningPipeline/**"
 
 jobs:
   ci:
@@ -34,7 +34,7 @@ jobs:
       # -------------------------
       - name: Install dependencies
         run: |
-          pip install -r Complete_MLOps_Bootcamp_With_10+_End_To_End_ML_Projects/5.MachineLearningPipeline/requirements.txt
+          pip install -r Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/5.MachineLearningPipeline/requirements.txt
 
 
       # -------------------------
@@ -42,7 +42,7 @@ jobs:
       # -------------------------
       - name: Run training
         run: |
-          cd Complete_MLOps_Bootcamp_With_10+_End_To_End_ML_Projects/5.MachineLearningPipeline
+          cd Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/5.MachineLearningPipeline
           python Main_ML.py
 
       - name: Debug structure
@@ -55,7 +55,7 @@ jobs:
       # -------------------------
       - name: Build Docker image
         run: |
-          docker build -t ml-pipeline-test ./Complete_MLOps_Bootcamp_With_10+_End_To_End_ML_Projects/5.MachineLearningPipeline
+          docker build -t ml-pipeline-test ./Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/5.MachineLearningPipeline
           
 
       - name: Run Docker container
