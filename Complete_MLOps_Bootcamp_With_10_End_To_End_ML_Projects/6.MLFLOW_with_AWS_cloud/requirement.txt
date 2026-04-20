@@ -1,0 +1,10 @@
+
+torch
+Pillow
+numpy>=1.24
+pandas
+scikit-learn
+mlflow
+PyYAML
+hyperopt
+plotly
