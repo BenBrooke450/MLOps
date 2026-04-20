@@ -29,7 +29,7 @@ jobs:
       # -------------------------
       - name: Install dependencies
         run: |
-          pip install -r 5.MachineLearningPipeline/requirements.txt
+          pip install -r Complete_MLOps_Bootcamp_With_10+_End_To_End_ML_Projects/5.MachineLearningPipeline/requirements.txt
           pip install dvc
 
       # -------------------------
@@ -37,7 +37,7 @@ jobs:
       # -------------------------
       - name: Pull data from DVC
         run: |
-          cd 5.MachineLearningPipeline
+          cd Complete_MLOps_Bootcamp_With_10+_End_To_End_ML_Projects/5.MachineLearningPipeline
           dvc pull
 
       # -------------------------
@@ -45,12 +45,12 @@ jobs:
       # -------------------------
       - name: Run training
         run: |
-          cd 5.MachineLearningPipeline
-          python train.py
+          cd Complete_MLOps_Bootcamp_With_10+_End_To_End_ML_Projects/5.MachineLearningPipeline
+          python Main_ML.py
 
       # -------------------------
       # Build Docker image (CI check only)
       # -------------------------
       - name: Build Docker image
         run: |
-          docker build -t ml-pipeline-test ./5.MachineLearningPipeline
+          docker build -t ml-pipeline-test ./Complete_MLOps_Bootcamp_With_10+_End_To_End_ML_Projects/5.MachineLearningPipeline
