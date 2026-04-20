@@ -8,4 +8,5 @@ sklearn
 mlflow
 yaml
 hyperopt
+plotly
 
