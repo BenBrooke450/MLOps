@@ -43,8 +43,8 @@ jobs:
       # -------------------------
       - name: Run training
         run: |
-          cd "Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/Airflow_ASTRO/exampledag"
-          python Main_ML.py
+          cd Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/Airflow_ASTRO/exampledag
+          python exampledag.py
 
       - name: Debug structure
         run: |
