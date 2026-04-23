@@ -16,4 +16,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Default command (run training)
-CMD ["python", "dags/Main_ML.py"]
+CMD ["python", "dags/exampledag.py"]
