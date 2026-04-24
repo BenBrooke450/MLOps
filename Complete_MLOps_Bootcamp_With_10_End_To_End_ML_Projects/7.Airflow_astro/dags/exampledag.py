@@ -21,7 +21,9 @@ first DAG tutorial: https://www.astronomer.io/docs/learn/get-started-with-airflo
 """
 
 from airflow.sdk import Asset, dag, task
+
 from pendulum import datetime
+
 import requests
 
 
