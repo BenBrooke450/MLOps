@@ -8,10 +8,10 @@ name: ML Pipeline CI
 on:
   push:
     paths:
-      - "Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/Airflow_astro/**"
+      - "Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/7.Airflow_astro/**"
   pull_request:
     paths:
-      - "Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/Airflow_astro/**"
+      - "Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/7.Airflow_astro/**"
 
 jobs:
   ci:
@@ -34,7 +34,7 @@ jobs:
       # -------------------------
       - name: Install dependencies
         run: |
-          cd "Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/Airflow_ASTRO"
+          cd "Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/7.Airflow_ASTRO"
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       # -------------------------
@@ -42,7 +42,7 @@ jobs:
       # -------------------------
       - name: Run training
         run: |
-          cd "Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/Airflow_ASTRO/dags"
+          cd "Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/7.Airflow_ASTRO/dags"
           python exampledag.py
 
       # -------------------------
@@ -50,7 +50,7 @@ jobs:
       # -------------------------
       - name: Build Docker image
         run: |
-          docker build -t ml-pipeline-test "./Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/Airflow_ASTRO"
+          docker build -t ml-pipeline-test "./Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/7.Airflow_ASTRO"
           
 
       - name: Run Docker container
