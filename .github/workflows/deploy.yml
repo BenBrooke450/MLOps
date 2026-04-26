@@ -8,10 +8,10 @@ name: ML Pipeline CI
 on:
   push:
     paths:
-      - "/Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/Airflow_astro/**"
+      - "Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/Airflow_astro/**"
   pull_request:
     paths:
-      - "/Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/Airflow_astro/**"
+      - "Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/Airflow_astro/**"
 
 jobs:
   ci:
