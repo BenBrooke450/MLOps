@@ -1,17 +1,14 @@
 
 
-
-
-
 name: ML Pipeline CI
 
 on:
   push:
     paths:
-      - "Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/7.Airflow_astro/**"
+      - "Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/project/**"
   pull_request:
     paths:
-      - "Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/7.Airflow_astro/**"
+      - "Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/project/**"
 
 jobs:
   ci:
@@ -21,37 +18,24 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      # -------------------------
-      # Python setup
-      # -------------------------
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      # -------------------------
-      # Install dependencies
-      # -------------------------
       - name: Install dependencies
         run: |
-          cd "Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/7.Airflow_astro"
+          cd "Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/project"
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      # -------------------------
-      # Run your pipeline
-      # -------------------------
-      - name: Run training
+      - name: Run tests
         run: |
-          cd "Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/7.Airflow_astro/dags"
-          python exampledag.py
+          cd "Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/project"
+          python test_app.py
 
-      # -------------------------
-      # Build Docker image (CI check only)
-      # -------------------------
       - name: Build Docker image
         run: |
-          docker build -t ml-pipeline-test "./Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/7.Airflow_astro"
-          
+          docker build -t ml-pipeline-test "./Complete_MLOps_Bootcamp_With_10_End_To_End_ML_Projects/project"
 
       - name: Run Docker container
         run: docker run ml-pipeline-test
