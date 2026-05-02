@@ -15,14 +15,15 @@ class DataValidation:
         try:
             validation_status = None
 
-            data = pd.read_csv(self.config.source)
+            data = pd.read_csv(self.config.source, sep=';')
             all_cols = list(data.columns)
 
             all_schema = self.config.all_schema.keys()
 
-
+            print("CHECK:",all_schema)
             for col in all_cols:
                 if col not in all_schema:
+                    print("not in:",col)
                     validation_status = False
                     with open(self.config.STATUS_FILE, 'w') as f:
                         f.write(f"Validation status: {validation_status}")
