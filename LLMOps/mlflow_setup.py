@@ -1,8 +1,8 @@
 import torch
 import mlflow
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
-from datasets import load_dataset
 import pandas as pd
+from load_imbd import load_imdb_split
 
 params = {
     "model_name":"distilbert-base-uncased",
@@ -25,36 +25,29 @@ mlflow.log_params(params)
 
 
 
-
-dataset = load_dataset("imdb", data_dir="/Users/benjaminbrooke/PycharmProjects/MLOps/LLMOps")
-
-with open(dataset, "w") as df:
-    pd.read_csv("/Users/benjaminbrooke/PycharmProjects/MLOps/LLMOps/df")
-
-
-
-
-
-
-
-save_path = "/Users/benjaminbrooke/PycharmProjects/MLOps/LLMOps/flan-t5-small"
+"""save_path = "/Users/benjaminbrooke/PycharmProjects/MLOps/LLMOps/flan-t5-small"
 
 model = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-small")
 tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-small")
 
-def tokenise(batch):
-    return tokenizer(batch["text"],padding="max_length",
-                     truncate=True,
-                     max_length=params["max_seq_length"])
-
-train_dataset = dataset["train"].shuffle()\
-                 .select(range(200))\
-                 .map(tokenise,batched=True)
-
-test_dataset = dataset["test"].shuffle()\
-                 .select(range(200))\
-                 .map(tokenise,batched=True)
+"""
 
 
-print(dataset)
+
+
+
+
+
+
+base_path = "/Users/benjaminbrooke/PycharmProjects/MLOps/LLMOps/aclImdb"
+
+train_dataset = load_imdb_split(f"{base_path}/train")
+test_dataset = load_imdb_split(f"{base_path}/test")
+
+
+
+
+train_short = train_dataset[:]
+print(test_dataset[:100])
+
 
