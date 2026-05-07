@@ -2,6 +2,7 @@ import torch
 import mlflow
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from datasets import load_dataset
+import pandas as pd
 
 params = {
     "model_name":"distilbert-base-uncased",
@@ -27,6 +28,15 @@ mlflow.log_params(params)
 
 dataset = load_dataset("imdb", data_dir="/Users/benjaminbrooke/PycharmProjects/MLOps/LLMOps")
 
+with open(dataset, "w") as df:
+    pd.read_csv("/Users/benjaminbrooke/PycharmProjects/MLOps/LLMOps/df")
+
+
+
+
+
+
+
 save_path = "/Users/benjaminbrooke/PycharmProjects/MLOps/LLMOps/flan-t5-small"
 
 model = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-small")
@@ -46,5 +56,5 @@ test_dataset = dataset["test"].shuffle()\
                  .map(tokenise,batched=True)
 
 
-
+print(dataset)
 
