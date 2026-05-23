@@ -202,3 +202,17 @@ with tqdm(total=params["num_epochs"]*len(train_short), desc = f"Epoch [1 / {para
 
 
 mlflow.pytorch.log_model(model,"flan-t5-small")
+
+model.save_pretrained("/Users/benjaminbrooke/PycharmProjects/MLOps/LLMOps/decoder_model")
+tokenizer.save_pretrained("/Users/benjaminbrooke/PycharmProjects/MLOps/LLMOps/decoder_model_tokeniser")
+
+mlflow.log_artifacts(
+    local_dir="/Users/benjaminbrooke/PycharmProjects/MLOps/LLMOps/decoder_model",
+    artifact_path="decoder_model"
+)
+
+mlflow.log_artifacts(
+    local_dir="/Users/benjaminbrooke/PycharmProjects/MLOps/LLMOps/decoder_model_tokeniser",
+    artifact_path="decoder_model_tokenizer"
+)
+
